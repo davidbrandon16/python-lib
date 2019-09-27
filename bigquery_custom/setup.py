@@ -1,7 +1,7 @@
 import setuptools
 
 setuptools.setup(
-    name="bigquery-davidbrandon16",
+    name="bigquery-custom-davidbrandon16",
     version="0.0.1",
     author="David Brandon",
     author_email="david.wilando4@gmail.com",
