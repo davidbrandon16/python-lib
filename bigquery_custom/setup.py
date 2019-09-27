@@ -12,7 +12,8 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/davidbrandon/python-lib",
-    packages=setuptools.find_packages("bigquery_custom"),
+    packages=setuptools.find_packages(),
+    scripts=['__init__.py'] ,
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
