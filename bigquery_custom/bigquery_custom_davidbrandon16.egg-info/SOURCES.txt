@@ -1,7 +1,0 @@
-README.md
-__init__.py
-setup.py
-bigquery_custom_davidbrandon16.egg-info/PKG-INFO
-bigquery_custom_davidbrandon16.egg-info/SOURCES.txt
-bigquery_custom_davidbrandon16.egg-info/dependency_links.txt
-bigquery_custom_davidbrandon16.egg-info/top_level.txt
