@@ -42,10 +42,12 @@ class BigQuery:
     def bq_insert_data(self,datas,table_ref):
         bigquery_client = bigquery.Client()
         table = bigquery_client.get_table(table_ref)
+        print(table)
         rows_to_insert = []
         for data in datas:
             rows_to_insert.append(tuple(data))
         errors = bigquery_client.insert_rows(table, rows_to_insert)
+        print(errors)
         assert errors == []
 
 
@@ -59,6 +61,6 @@ class BigQuery:
             return
 
 bq = BigQuery("/Users/davidbrandon/Documents/Data Scientist/service.json")
-asdasd = [['e166c31f-0bf6-4316-ad79-c3669ad69121', 'Sulawesi Tenggara', 'Indonesia', 'ID', '', '', -1.8479, 120.5279]]
+asdasd = [['e166c31f-0bf6-4316-ad79-c3669ad69121', 'Sulawesi Tenggara', 'Indonesia', 'ID', 'Sulawesi Tenggara', 'asdasd', -1.8479, 120.5279]]
 table_ref= 'prod-datarangers.sandbox_datascientist.car_city_mapping_v2'
 bq.bq_insert_data(asdasd,table_ref)
