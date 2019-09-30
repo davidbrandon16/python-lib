@@ -1,5 +1,16 @@
 # Bigquery Custom
 
+#requirement
+|requirement| version|
+| :---: | :---:|
+| python| 3.7|
+| bigquery| latest|
+
+
+#Install
+
+`pip install git+https://github.com/davidbrandon16/python-lib#subdirectory=bigquery_custom` 
+
 ## Create Object
 
 ```python
