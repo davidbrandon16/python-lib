@@ -42,6 +42,7 @@ class BigQuery:
     def bq_insert_data(self,datas,table_ref):
         bigquery_client = bigquery.Client()
         table = bigquery_client.get_table(table_ref)
+        print(datas)
         rows_to_insert = datas
         print(rows_to_insert)
         errors = bigquery_client.insert_rows(table, rows_to_insert)
