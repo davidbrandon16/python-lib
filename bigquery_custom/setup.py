@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="bigquery-custom-davidbrandon16",
-    version="0.0.2",
+    version="0.0.1",
     author="David Brandon Wilando",
     author_email="david.wilando4@gmail.com",
     description="custom bigquery",
