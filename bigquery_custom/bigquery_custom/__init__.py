@@ -42,11 +42,11 @@ class BigQuery:
     def bq_insert_data(self,datas,table_ref):
         bigquery_client = bigquery.Client()
         table = bigquery_client.get_table(table_ref)
-        print(datas)
-        # rows_to_insert = datas
-        # print(rows_to_insert)
-        # errors = bigquery_client.insert_rows(table, rows_to_insert)
-        # assert errors == []
+        rows_to_insert = []
+        for data in datas:
+            rows_to_insert.append(tuple(data))
+        errors = bigquery_client.insert_rows(table, rows_to_insert)
+        assert errors == []
 
 
     def bq_delete_table(self,table_ref):
@@ -57,3 +57,8 @@ class BigQuery:
             print("success delete ", table_ref)
         except:
             return
+
+bq = BigQuery("/Users/davidbrandon/Documents/Data Scientist/service.json")
+asdasd = [['e166c31f-0bf6-4316-ad79-c3669ad69121', 'Sulawesi Tenggara', 'Indonesia', 'ID', '', '', -1.8479, 120.5279]]
+table_ref= 'prod-datarangers.sandbox_datascientist.car_city_mapping_v2'
+bq.bq_insert_data(asdasd,table_ref)
