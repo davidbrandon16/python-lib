@@ -44,10 +44,11 @@ class BigQuery:
         table = bigquery_client.get_table(table_ref)
         rows_to_insert = datas
         errors = bigquery_client.insert_rows(table, rows_to_insert)
-        if errors == [] :
+        if len(errors) == 0 :
             print ("success Insert data")
         else :
             print (errors)
+        assert errors == []
 
 
     def bq_delete_table(self,table_ref):
