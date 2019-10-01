@@ -59,8 +59,3 @@ class BigQuery:
             print("success delete ", table_ref)
         except:
             return
-
-bq = BigQuery("/Users/davidbrandon/Documents/Data Scientist/service.json")
-asdasd = [['e166c31f-0bf6-4316-ad79-c3669ad69121', 'Sulawesi Tenggara', 'Indonesia', 'ID', 'Sulawesi Tenggara', 'asdasd', -1.8479, 120.5279]]
-table_ref= 'prod-datarangers.sandbox_datascientist.car_city_mapping_v2'
-bq.bq_insert_data(asdasd,table_ref)
