@@ -42,7 +42,10 @@ class BigQuery:
     def bq_insert_data(self,datas,table_ref):
         bigquery_client = bigquery.Client()
         table = bigquery_client.get_table(table_ref)
-        rows_to_insert = datas
+        rows_to_insert = []
+        for data in datas:
+            rows_to_insert.append(tuple(data))
+            print(rows_to_insert)
         errors = bigquery_client.insert_rows(table, rows_to_insert)
         print(errors)
         assert errors == []
@@ -56,5 +59,6 @@ class BigQuery:
             print("success delete ", table_ref)
         except:
             return
+
 
 
