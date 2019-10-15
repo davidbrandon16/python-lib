@@ -43,16 +43,13 @@ class BigQuery:
         bigquery_client = bigquery.Client()
         table = bigquery_client.get_table(table_ref)
         rows_to_insert = []
-        for data in datas:
-            rows_to_insert.append(tuple(data))
+        for data in len(datas):
+            if len(rows_to_insert)==5000:
+                errors = bigquery_client.insert_rows(table, rows_to_insert)
+                rows_to_insert = []
+                print(errors)
+            rows_to_insert.append(tuple(datas[data]))
             #print(rows_to_insert)
-        maximum = 1000 if len(rows_to_insert)>1000 else len(rows_to_insert)
-        minimum =0
-        while minimum < len(rows_to_insert):
-            errors = bigquery_client.insert_rows(table, rows_to_insert[minimum:maximum])
-            minimum = maximum +1
-            maximum = maximum+1000 if len(rows_to_insert)< (maximum+1000) else len(rows_to_insert)
-        print(errors)
         assert errors == []
 
 
