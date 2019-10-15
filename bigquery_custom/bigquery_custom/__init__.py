@@ -46,7 +46,12 @@ class BigQuery:
         for data in datas:
             rows_to_insert.append(tuple(data))
             print(rows_to_insert)
-        errors = bigquery_client.insert_rows(table, rows_to_insert)
+        max = 1000 if len(datas)>1000 else len(datas)
+        min =0
+        while min < len(datas):
+            errors = bigquery_client.insert_rows(table, rows_to_insert[min:max])
+            min = max +1
+            max = max+1000 if len(datas)< (max+1000) else len(datas)
         print(errors)
         assert errors == []
 
