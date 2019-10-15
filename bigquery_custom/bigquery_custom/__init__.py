@@ -44,11 +44,12 @@ class BigQuery:
         table = bigquery_client.get_table(table_ref)
         rows_to_insert = []
         for data in len(datas):
-            if len(rows_to_insert)==5000:
+            rows_to_insert.append(tuple(datas[data]))
+            if len(rows_to_insert)==5000 or data ==len(datas-1):
                 errors = bigquery_client.insert_rows(table, rows_to_insert)
                 rows_to_insert = []
                 print(errors)
-            rows_to_insert.append(tuple(datas[data]))
+            
             #print(rows_to_insert)
         assert errors == []
 
