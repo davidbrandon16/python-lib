@@ -1,6 +1,7 @@
 from google.cloud import bigquery
 from google.oauth2 import service_account
 import os
+import pickle as pkl
 
 class BigQuery:
 
@@ -43,9 +44,9 @@ class BigQuery:
         bigquery_client = bigquery.Client()
         table = bigquery_client.get_table(table_ref)
         rows_to_insert = []
-        for data in len(datas):
+        for data in range(0,len(datas)):
             rows_to_insert.append(tuple(datas[data]))
-            if len(rows_to_insert)==5000 or data ==len(datas-1):
+            if len(rows_to_insert)==5000 or data ==len(datas)-1:
                 errors = bigquery_client.insert_rows(table, rows_to_insert)
                 rows_to_insert = []
                 print(errors)
@@ -62,6 +63,4 @@ class BigQuery:
             print("success delete ", table_ref)
         except:
             return
-
-
 
