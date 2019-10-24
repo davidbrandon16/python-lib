@@ -36,8 +36,9 @@ import bigquery_custom as bc
 bq = bc.BigQuery("service.json")
 columns = ["name","age"]
 data_types = ["STRING", "INT64"]
+mode = ["REQUIRED", "NULLABLE"]
 table_ref = "project_id.package_name.table_name"
-bq.bq_create_table(table_ref,columns, data_types)
+bq.bq_create_table(table_ref,columns, data_types, mode)
 #if want to add partition just add partition name
 ```
 
