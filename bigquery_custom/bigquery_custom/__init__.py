@@ -14,7 +14,7 @@ class BigQuery:
         query_job = client.query(query)
         return query_job.result()
 
-    def bq_create_table(self,table_ref,columns=[], data_types=[], partition=None):
+    def bq_create_table(self,table_ref,columns=[], data_types=[], mode=[],partition=None):
         if len(columns) ==0 or len(data_types) ==0:
             print("columns or data type must be filled")
             return
@@ -28,7 +28,7 @@ class BigQuery:
         except Exception as e:
             schema = []
             for i in range(0,len(data_types)):
-                schema.append(bigquery.SchemaField(columns[i], data_types[i], mode='REQUIRED'))
+                schema.append(bigquery.SchemaField(columns[i], data_types[i], mode[i]))
             table = bigquery.Table(table_ref, schema=schema)
             if partition is not None:
                 table.time_partitioning = bigquery.TimePartitioning(type_=bigquery.TimePartitioningType.DAY,
